@@ -134,7 +134,10 @@ function main(): void {
   app.root.addChild(sun);
   sun.setEulerAngles(52, 35, 0);
 
-  buildDemoRoom(app);
+  const glbUrl = resolveGlbUrl();
+  if (!glbUrl) {
+    buildDemoRoom(app);
+  }
 
   let yaw = 180;
   let pitch = 0;
@@ -224,8 +227,6 @@ function main(): void {
     }
   });
 
-  const glbUrl = resolveGlbUrl();
-
   const startApp = () => {
     app.on('update', (dt) => {
       const kb = app.keyboard;
@@ -294,6 +295,7 @@ function main(): void {
   if (glbUrl) {
     app.assets.loadFromUrl(glbUrl, 'container', (err, asset) => {
       if (err || !asset?.resource) {
+        buildDemoRoom(app);
         showLoadError();
         startApp();
         return;
