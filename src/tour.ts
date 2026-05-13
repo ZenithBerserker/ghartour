@@ -11,7 +11,9 @@ import {
   KEY_D,
   KEY_SHIFT,
   MOUSEBUTTON_LEFT,
-  Mouse
+  Mouse,
+  Keyboard,
+  TouchDevice
 } from 'playcanvas';
 import { getLang, t } from './i18n';
 
@@ -92,8 +94,13 @@ function hideLoading(): void {
 
 function showLoadError(): void {
   const lang = getLang();
-  const el = document.getElementById('loading');
-  if (el) el.textContent = t('tourErr', lang);
+  const hud = document.getElementById('hud');
+  if (hud) {
+    const note = document.createElement('div');
+    note.style.cssText = 'color:#f0c674;margin-bottom:0.35rem;font-weight:600;';
+    note.textContent = t('tourErr', lang);
+    hud.insertBefore(note, hud.firstChild);
+  }
 }
 
 function main(): void {
@@ -102,7 +109,11 @@ function main(): void {
   const canvas = document.getElementById('app-canvas') as HTMLCanvasElement | null;
   if (!canvas) return;
 
-  const app = new Application(canvas);
+  const app = new Application(canvas, {
+    keyboard: new Keyboard(window),
+    mouse: new Mouse(canvas),
+    touch: new TouchDevice(canvas)
+  });
   const mobile = window.matchMedia('(max-width: 768px)').matches;
   app.graphicsDevice.maxPixelRatio = mobile ? 1 : Math.min(2, window.devicePixelRatio || 1);
 
