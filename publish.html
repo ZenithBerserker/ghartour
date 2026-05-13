@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1419" />
+    <title>Publish — Ghar 360</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/shell.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1 data-i18n="publishTitle">Publish</h1>
+        <button type="button" class="btn btn-ghost" id="lang-toggle">हिंदी</button>
+      </header>
+      <p class="tagline" data-i18n="pubHeading"></p>
+      <a class="btn btn-secondary" href="./index.html" data-i18n="tourBack" style="margin-bottom: 1rem; display: inline-flex">Home</a>
+      <div class="card">
+        <form id="publish-form">
+          <label for="slug" data-i18n="pubSlug"></label>
+          <input id="slug" name="slug" type="text" autocomplete="off" placeholder="e.g. bandra-2bhk" />
+          <label for="glb-url" data-i18n="pubGlb"></label>
+          <input
+            id="glb-url"
+            name="glb"
+            type="url"
+            placeholder="https://your-cdn.example.com/flat.glb"
+          />
+          <label for="label" data-i18n="pubLabel"></label>
+          <input id="label" name="label" type="text" placeholder="Optional title" />
+          <button class="btn btn-primary" type="submit" data-i18n="pubSubmit"></button>
+        </form>
+        <div id="publish-out" aria-live="polite"></div>
+      </div>
+      <p class="foot">
+        <span data-i18n="footNote"></span>
+      </p>
+    </div>
+    <script type="module" src="/src/publish-page.ts"></script>
+  </body>
+</html>

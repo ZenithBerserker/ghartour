@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1419" />
+    <meta
+      name="description"
+      content="3D flat tours for India — share a link, explore on phone or laptop."
+    />
+    <title>Ghar 360 — 3D home tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/shell.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1 data-i18n="brand">Ghar 360</h1>
+        <button type="button" class="btn btn-ghost" id="lang-toggle" data-i18n="langToggle">
+          हिंदी
+        </button>
+      </header>
+      <p class="tagline" data-i18n="tagline"></p>
+      <div class="actions">
+        <a class="btn btn-primary" href="./tour.html" data-i18n="ctaTour">Open demo tour</a>
+        <a class="btn btn-secondary" href="./publish.html" data-i18n="ctaPublish">Publish a flat</a>
+      </div>
+      <p class="foot" data-i18n="footNote"></p>
+      <p class="tech">
+        3D runtime:
+        <a href="https://github.com/playcanvas/engine" rel="noopener noreferrer" target="_blank"
+          >playcanvas/engine</a
+        >
+        (MIT). Scaffold:
+        <a href="https://github.com/playcanvas/create-playcanvas" rel="noopener noreferrer" target="_blank"
+          >create-playcanvas</a
+        >.
+      </p>
+    </div>
+    <script type="module" src="/src/landing.ts"></script>
+  </body>
+</html>
