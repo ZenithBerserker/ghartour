@@ -20,19 +20,13 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourLoad: 'Loading…',
     tourErr: 'Could not load model. Check URL and CORS.',
     tourBack: 'Home',
-    demoHeading: 'Try sample spaces',
+    demoHeading: 'Try sample interiors',
     demoNote:
-      'First links load files from this site (good for Vercel). Others are external demos. Same tour player as your GLB.',
-    demoHostedBedroom: 'On this site — modern bedroom',
-    demoHostedShaderBall: 'On this site — shader ball (materials)',
-    demoHostedDuck: 'On this site — tiny duck (quick test)',
-    demoBedroom: 'Modern bedroom (interior)',
+      'Sponza loads from Khronos over the network. Bedroom, kitchen, and hall load from this site — same tour controls (walk, look) in PlayCanvas.',
     demoSponza: 'Sponza atrium (large interior, glTF)',
-    demoPool: 'Pool scene',
-    demoHallway: 'Sci‑fi corridor',
-    demoDuck: 'Khronos Duck (tiny test)',
-    demoHelmet: 'Damaged Helmet (materials test)',
-    demoAstronaut: 'Astronaut'
+    demoInteriorBedroom: 'Bedroom (hosted GLB)',
+    demoInteriorKitchen: 'Kitchen scene (hosted GLB)',
+    demoInteriorHall: 'Corridor / hall (hosted GLB)'
   },
   hi: {
     brand: 'घर 360',
@@ -53,19 +47,13 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourLoad: 'लोड हो रहा है…',
     tourErr: 'मॉडल लोड नहीं हुआ। URL और CORS जाँचें।',
     tourBack: 'होम',
-    demoHeading: 'डेमो स्पेस आज़माएँ',
+    demoHeading: 'डेमो इंटीरियर आज़माएँ',
     demoNote:
-      'पहले लिंक इसी साइट की फ़ाइलें हैं (Vercel पर ठीक)। बाकी बाहरी डेमो। वही टूर प्लेयर जो आपके GLB के लिए है।',
-    demoHostedBedroom: 'इसी साइट — आधुनिक बेडरूम',
-    demoHostedShaderBall: 'इसी साइट — शेडर बॉल (मटीरियल)',
-    demoHostedDuck: 'इसी साइट — छोटा डक (तुरंत)',
-    demoBedroom: 'आधुनिक बेडरूम (अंदर)',
+      'स्पोंज़ा नेटवर्क से ख्रोनोस से लोड होता है। बेडरूम, रसोई और हॉल इसी साइट से — PlayCanvas में वही चलना/घूमना।',
     demoSponza: 'स्पोंज़ा एट्रियम (बड़ा इंटीरियर, glTF)',
-    demoPool: 'पूल दृश्य',
-    demoHallway: 'साइ‑फ़ाई कॉरिडोर',
-    demoDuck: 'ख्रोनोस डक (छोटा टेस्ट)',
-    demoHelmet: 'डैमेज्ड हेलमेट (मटीरियल टेस्ट)',
-    demoAstronaut: 'अंतरिक्ष यात्री'
+    demoInteriorBedroom: 'बेडरूम (होस्ट किया GLB)',
+    demoInteriorKitchen: 'रसोई दृश्य (होस्ट किया GLB)',
+    demoInteriorHall: 'कॉरिडोर / हॉल (होस्ट किया GLB)'
   }
 };
 

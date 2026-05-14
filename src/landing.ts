@@ -1,51 +1,30 @@
 import { getLang, setLang, t, type Lang } from './i18n';
 
-/** GLB files under `public/samples/` — same origin, works on Vercel without CORS issues. */
-function hostedGlbUrl(path: string): string {
+const SPONZA_GLTF =
+  'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/Sponza/glTF/Sponza.gltf';
+
+/** GLB files under `public/samples/` — same origin as the site (Vercel / GitHub Pages). */
+function hostedAssetUrl(path: string): string {
   const base = import.meta.env.BASE_URL;
   return new URL(path.replace(/^\//, ''), window.location.origin + base).href;
 }
 
-const HOSTED_SAMPLES: { key: string; path: string }[] = [
-  { key: 'demoHostedBedroom', path: 'samples/modern-bedroom.glb' },
-  { key: 'demoHostedShaderBall', path: 'samples/shader-ball.glb' },
-  { key: 'demoHostedDuck', path: 'samples/duck.glb' }
-];
-
-const SAMPLE_TOURS: { key: string; url: string }[] = [
-  ...HOSTED_SAMPLES.map(({ key, path }) => ({ key, url: hostedGlbUrl(path) })),
-  {
-    key: 'demoSponza',
-    url: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/Sponza/glTF/Sponza.gltf'
-  },
-  {
-    key: 'demoPool',
-    url: 'https://threejs.org/examples/models/gltf/pool.glb'
-  },
-  {
-    key: 'demoHallway',
-    url: 'https://threejs.org/examples/models/gltf/space_ship_hallway.glb'
-  },
-  {
-    key: 'demoDuck',
-    url: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF-Binary/Duck.glb'
-  },
-  {
-    key: 'demoHelmet',
-    url: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb'
-  },
-  {
-    key: 'demoAstronaut',
-    url: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb'
-  }
-];
+/** Sponza (external glTF) plus three hosted interior GLBs that load in PlayCanvas with movement. */
+function sampleTourList(): { key: string; url: string }[] {
+  return [
+    { key: 'demoSponza', url: SPONZA_GLTF },
+    { key: 'demoInteriorBedroom', url: hostedAssetUrl('samples/bedroom.glb') },
+    { key: 'demoInteriorKitchen', url: hostedAssetUrl('samples/kitchen.glb') },
+    { key: 'demoInteriorHall', url: hostedAssetUrl('samples/hall.glb') }
+  ];
+}
 
 function renderDemoTours(lang: Lang): void {
   const ul = document.getElementById('demo-tours');
   if (!ul) return;
   ul.replaceChildren();
   const base = import.meta.env.BASE_URL;
-  for (const item of SAMPLE_TOURS) {
+  for (const item of sampleTourList()) {
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.className = 'demo-link';
