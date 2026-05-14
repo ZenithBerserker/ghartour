@@ -22,7 +22,10 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourBack: 'Home',
     demoHeading: 'Try sample spaces',
     demoNote:
-      'Public demo models (not real listings). Opens the same tour player your GLB uses.',
+      'First links load files from this site (good for Vercel). Others are external demos. Same tour player as your GLB.',
+    demoHostedBedroom: 'On this site — modern bedroom',
+    demoHostedShaderBall: 'On this site — shader ball (materials)',
+    demoHostedDuck: 'On this site — tiny duck (quick test)',
     demoBedroom: 'Modern bedroom (interior)',
     demoSponza: 'Sponza atrium (large interior, glTF)',
     demoPool: 'Pool scene',
@@ -52,7 +55,10 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourBack: 'होम',
     demoHeading: 'डेमो स्पेस आज़माएँ',
     demoNote:
-      'सार्वजनिक डेमो मॉडल (असली लिस्टिंग नहीं)। वही टूर प्लेयर जो आपके GLB के लिए है।',
+      'पहले लिंक इसी साइट की फ़ाइलें हैं (Vercel पर ठीक)। बाकी बाहरी डेमो। वही टूर प्लेयर जो आपके GLB के लिए है।',
+    demoHostedBedroom: 'इसी साइट — आधुनिक बेडरूम',
+    demoHostedShaderBall: 'इसी साइट — शेडर बॉल (मटीरियल)',
+    demoHostedDuck: 'इसी साइट — छोटा डक (तुरंत)',
     demoBedroom: 'आधुनिक बेडरूम (अंदर)',
     demoSponza: 'स्पोंज़ा एट्रियम (बड़ा इंटीरियर, glTF)',
     demoPool: 'पूल दृश्य',

@@ -1,10 +1,19 @@
 import { getLang, setLang, t, type Lang } from './i18n';
 
+/** GLB files under `public/samples/` — same origin, works on Vercel without CORS issues. */
+function hostedGlbUrl(path: string): string {
+  const base = import.meta.env.BASE_URL;
+  return new URL(path.replace(/^\//, ''), window.location.origin + base).href;
+}
+
+const HOSTED_SAMPLES: { key: string; path: string }[] = [
+  { key: 'demoHostedBedroom', path: 'samples/modern-bedroom.glb' },
+  { key: 'demoHostedShaderBall', path: 'samples/shader-ball.glb' },
+  { key: 'demoHostedDuck', path: 'samples/duck.glb' }
+];
+
 const SAMPLE_TOURS: { key: string; url: string }[] = [
-  {
-    key: 'demoBedroom',
-    url: 'https://threejs.org/examples/models/gltf/minimalistic_modern_bedroom.glb'
-  },
+  ...HOSTED_SAMPLES.map(({ key, path }) => ({ key, url: hostedGlbUrl(path) })),
   {
     key: 'demoSponza',
     url: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/Sponza/glTF/Sponza.gltf'
