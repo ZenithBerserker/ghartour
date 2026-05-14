@@ -1,5 +1,11 @@
 import { getLang, setLang, t, type Lang } from './i18n';
 
+/** Same-origin asset under `public/` (reliable on Vercel / GitHub Pages). */
+function hostedAssetUrl(path: string): string {
+  const base = import.meta.env.BASE_URL;
+  return new URL(path.replace(/^\//, ''), window.location.origin + base).href;
+}
+
 /** Khronos Sponza (glTF + sidecar assets; same-origin relative URLs resolve on raw.githubusercontent.com). */
 const SPONZA_GLTF =
   'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/Sponza/glTF/Sponza.gltf';
@@ -24,7 +30,11 @@ const PUBLIC_INTERIOR_GLBS: { key: string; url: string }[] = [
 ];
 
 function sampleTourList(): { key: string; url: string }[] {
-  return [{ key: 'demoSponza', url: SPONZA_GLTF }, ...PUBLIC_INTERIOR_GLBS];
+  return [
+    { key: 'demoPenthouse', url: hostedAssetUrl('samples/luxury-penthouse.glb') },
+    { key: 'demoSponza', url: SPONZA_GLTF },
+    ...PUBLIC_INTERIOR_GLBS
+  ];
 }
 
 function renderDemoTours(lang: Lang): void {

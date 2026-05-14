@@ -22,7 +22,8 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourBack: 'Home',
     demoHeading: 'Try sample interiors',
     demoNote:
-      'All links use public HTTPS URLs (Khronos + three.js examples). CORS allows your site to load them in PlayCanvas.',
+      'First link is your luxury penthouse GLB from this site (~21 MB — use Wi‑Fi). Other links use public Khronos / three.js URLs.',
+    demoPenthouse: 'Luxury penthouse — fully furnished (this site)',
     demoSponza: 'Sponza atrium (large interior, glTF)',
     demoInteriorBedroom: 'Bedroom interior (GLB, three.js)',
     demoInteriorKitchen: 'Kitchen scene (GLB, three.js)',
@@ -49,7 +50,8 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourBack: 'होम',
     demoHeading: 'डेमो इंटीरियर आज़माएँ',
     demoNote:
-      'सारे लिंक सार्वजनिक HTTPS URL हैं (ख्रोनोस + three.js)। CORS से आपकी साइट PlayCanvas में लोड कर सकती है।',
+      'पहला लिंक आपका लग्ज़री पेंटहाउस GLB है (~21 MB — Wi‑Fi बेहतर)। बाकी सार्वजनिक ख्रोनोस / three.js लिंक।',
+    demoPenthouse: 'लग्ज़री पेंटहाउस — पूरी सजावट (इसी साइट)',
     demoSponza: 'स्पोंज़ा एट्रियम (बड़ा इंटीरियर, glTF)',
     demoInteriorBedroom: 'बेडरूम इंटीरियर (GLB, three.js)',
     demoInteriorKitchen: 'रसोई दृश्य (GLB, three.js)',
