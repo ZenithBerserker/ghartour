@@ -16,6 +16,7 @@ import {
   TouchDevice
 } from 'playcanvas';
 import { getLang, t } from './i18n';
+import { SceneCollision } from './tour-collision';
 
 const STORAGE_KEY = 'ret_tours';
 
@@ -126,7 +127,7 @@ function main(): void {
   const camera = new Entity('camera');
   camera.addComponent('camera', {
     clearColor: new Color(0.07, 0.09, 0.12),
-    farClip: 200,
+    farClip: 1000,
     fov: mobile ? 72 : 68
   });
   app.root.addChild(camera);
@@ -146,14 +147,20 @@ function main(): void {
   sun.setEulerAngles(52, 35, 0);
 
   const glbUrl = resolveGlbUrl();
+  /** Only the tiny built-in demo room uses an XZ box clamp; loaded scans move freely. */
+  let walkClampRadius: number | null = null;
+  /** Triangle mesh collision for loaded GLB/glTF (null for demo room or failed build). */
+  let sceneCollision: SceneCollision | null = null;
   if (!glbUrl) {
     buildDemoRoom(app);
+    walkClampRadius = 6.2;
   }
 
   let yaw = 180;
   let pitch = 0;
   const eyeHeight = 1.58;
   const moveTmp = new Vec3();
+  const probeOrigin = new Vec3();
   const forwardFlat = new Vec3();
   const rightFlat = new Vec3();
 
@@ -289,11 +296,33 @@ function main(): void {
       }
 
       moveTmp.copy(camera.getPosition());
-      moveTmp.x += mx;
-      moveTmp.z += mz;
-      const limit = 6.2;
-      moveTmp.x = Math.max(-limit, Math.min(limit, moveTmp.x));
-      moveTmp.z = Math.max(-limit, Math.min(limit, moveTmp.z));
+
+      let dx = mx;
+      let dz = mz;
+      if (sceneCollision && (dx !== 0 || dz !== 0)) {
+        const hLen = Math.hypot(dx, dz);
+        const skin = 0.14;
+        const px = hLen > 1e-6 ? -dz / hLen : 0;
+        const pz = hLen > 1e-6 ? dx / hLen : 0;
+        let best = hLen + skin;
+        for (const off of [0, 0.24, -0.24]) {
+          probeOrigin.set(moveTmp.x + px * off, moveTmp.y, moveTmp.z + pz * off);
+          const hitDist = sceneCollision.castWalk(probeOrigin, dx, dz, hLen + skin);
+          if (hitDist < best) best = hitDist;
+        }
+        best = Math.max(0, best - skin);
+        const s = hLen > 1e-6 ? Math.min(1, best / hLen) : 1;
+        dx *= s;
+        dz *= s;
+      }
+
+      moveTmp.x += dx;
+      moveTmp.z += dz;
+      if (walkClampRadius != null) {
+        const lim = walkClampRadius;
+        moveTmp.x = Math.max(-lim, Math.min(lim, moveTmp.x));
+        moveTmp.z = Math.max(-lim, Math.min(lim, moveTmp.z));
+      }
       moveTmp.y = eyeHeight;
       camera.setPosition(moveTmp);
       camera.setEulerAngles(pitch, yaw, 0);
@@ -307,6 +336,7 @@ function main(): void {
     app.assets.loadFromUrl(glbUrl, 'container', (err, asset) => {
       if (err || !asset?.resource) {
         buildDemoRoom(app);
+        walkClampRadius = 6.2;
         showLoadError();
         startApp();
         return;
@@ -317,6 +347,7 @@ function main(): void {
         });
         app.root.addChild(entity);
         entity.setLocalPosition(0, 0, 0);
+        sceneCollision = SceneCollision.fromEntity(entity);
       } catch {
         showLoadError();
       }
