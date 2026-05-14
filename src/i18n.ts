@@ -19,7 +19,17 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourTap: 'Tap canvas to look around (desktop: click for mouse lock)',
     tourLoad: 'Loading…',
     tourErr: 'Could not load model. Check URL and CORS.',
-    tourBack: 'Home'
+    tourBack: 'Home',
+    demoHeading: 'Try sample spaces',
+    demoNote:
+      'Public demo models (not real listings). Opens the same tour player your GLB uses.',
+    demoBedroom: 'Modern bedroom (interior)',
+    demoSponza: 'Sponza atrium (large interior, glTF)',
+    demoPool: 'Pool scene',
+    demoHallway: 'Sci‑fi corridor',
+    demoDuck: 'Khronos Duck (tiny test)',
+    demoHelmet: 'Damaged Helmet (materials test)',
+    demoAstronaut: 'Astronaut'
   },
   hi: {
     brand: 'घर 360',
@@ -39,7 +49,17 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourTap: 'देखने के लिए कैनवास पर टैप करें (डेस्कटॉप: माउस लॉक)',
     tourLoad: 'लोड हो रहा है…',
     tourErr: 'मॉडल लोड नहीं हुआ। URL और CORS जाँचें।',
-    tourBack: 'होम'
+    tourBack: 'होम',
+    demoHeading: 'डेमो स्पेस आज़माएँ',
+    demoNote:
+      'सार्वजनिक डेमो मॉडल (असली लिस्टिंग नहीं)। वही टूर प्लेयर जो आपके GLB के लिए है।',
+    demoBedroom: 'आधुनिक बेडरूम (अंदर)',
+    demoSponza: 'स्पोंज़ा एट्रियम (बड़ा इंटीरियर, glTF)',
+    demoPool: 'पूल दृश्य',
+    demoHallway: 'साइ‑फ़ाई कॉरिडोर',
+    demoDuck: 'ख्रोनोस डक (छोटा टेस्ट)',
+    demoHelmet: 'डैमेज्ड हेलमेट (मटीरियल टेस्ट)',
+    demoAstronaut: 'अंतरिक्ष यात्री'
   }
 };
 

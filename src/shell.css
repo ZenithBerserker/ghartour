@@ -166,6 +166,40 @@ input:focus {
   color: #9ef0c0;
 }
 
+.demo-note {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.demo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.demo-link {
+  display: block;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #b8e8ff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.demo-link:hover {
+  background: rgba(126, 200, 227, 0.12);
+  border-color: rgba(126, 200, 227, 0.35);
+}
+
 .tech {
   font-size: 0.8rem;
   color: var(--muted);
