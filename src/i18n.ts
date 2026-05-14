@@ -22,11 +22,11 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourBack: 'Home',
     demoHeading: 'Try sample interiors',
     demoNote:
-      'Sponza loads from Khronos over the network. Bedroom, kitchen, and hall load from this site — same tour controls (walk, look) in PlayCanvas.',
+      'All links use public HTTPS URLs (Khronos + three.js examples). CORS allows your site to load them in PlayCanvas.',
     demoSponza: 'Sponza atrium (large interior, glTF)',
-    demoInteriorBedroom: 'Bedroom (hosted GLB)',
-    demoInteriorKitchen: 'Kitchen scene (hosted GLB)',
-    demoInteriorHall: 'Corridor / hall (hosted GLB)'
+    demoInteriorBedroom: 'Bedroom interior (GLB, three.js)',
+    demoInteriorKitchen: 'Kitchen scene (GLB, three.js)',
+    demoInteriorHall: 'Indoor pool room — large interior (GLB, three.js)'
   },
   hi: {
     brand: 'घर 360',
@@ -49,11 +49,11 @@ const STRINGS: Record<Lang, Record<string, string>> = {
     tourBack: 'होम',
     demoHeading: 'डेमो इंटीरियर आज़माएँ',
     demoNote:
-      'स्पोंज़ा नेटवर्क से ख्रोनोस से लोड होता है। बेडरूम, रसोई और हॉल इसी साइट से — PlayCanvas में वही चलना/घूमना।',
+      'सारे लिंक सार्वजनिक HTTPS URL हैं (ख्रोनोस + three.js)। CORS से आपकी साइट PlayCanvas में लोड कर सकती है।',
     demoSponza: 'स्पोंज़ा एट्रियम (बड़ा इंटीरियर, glTF)',
-    demoInteriorBedroom: 'बेडरूम (होस्ट किया GLB)',
-    demoInteriorKitchen: 'रसोई दृश्य (होस्ट किया GLB)',
-    demoInteriorHall: 'कॉरिडोर / हॉल (होस्ट किया GLB)'
+    demoInteriorBedroom: 'बेडरूम इंटीरियर (GLB, three.js)',
+    demoInteriorKitchen: 'रसोई दृश्य (GLB, three.js)',
+    demoInteriorHall: 'इंडोर पूल रूम — बड़ा इंटीरियर (GLB, three.js)'
   }
 };
 

@@ -1,22 +1,30 @@
 import { getLang, setLang, t, type Lang } from './i18n';
 
+/** Khronos Sponza (glTF + sidecar assets; same-origin relative URLs resolve on raw.githubusercontent.com). */
 const SPONZA_GLTF =
   'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/Sponza/glTF/Sponza.gltf';
 
-/** GLB files under `public/samples/` — same origin as the site (Vercel / GitHub Pages). */
-function hostedAssetUrl(path: string): string {
-  const base = import.meta.env.BASE_URL;
-  return new URL(path.replace(/^\//, ''), window.location.origin + base).href;
-}
+/**
+ * Three interior GLBs from three.js examples — single-file, HTTPS, CORS `*` (verified for browser fetch).
+ * @see https://threejs.org/examples/#webgl_loader_gltf
+ */
+const PUBLIC_INTERIOR_GLBS: { key: string; url: string }[] = [
+  {
+    key: 'demoInteriorBedroom',
+    url: 'https://threejs.org/examples/models/gltf/minimalistic_modern_bedroom.glb'
+  },
+  {
+    key: 'demoInteriorKitchen',
+    url: 'https://threejs.org/examples/models/gltf/coffeemat.glb'
+  },
+  {
+    key: 'demoInteriorHall',
+    url: 'https://threejs.org/examples/models/gltf/pool.glb'
+  }
+];
 
-/** Sponza (external glTF) plus three hosted interior GLBs that load in PlayCanvas with movement. */
 function sampleTourList(): { key: string; url: string }[] {
-  return [
-    { key: 'demoSponza', url: SPONZA_GLTF },
-    { key: 'demoInteriorBedroom', url: hostedAssetUrl('samples/bedroom.glb') },
-    { key: 'demoInteriorKitchen', url: hostedAssetUrl('samples/kitchen.glb') },
-    { key: 'demoInteriorHall', url: hostedAssetUrl('samples/hall.glb') }
-  ];
+  return [{ key: 'demoSponza', url: SPONZA_GLTF }, ...PUBLIC_INTERIOR_GLBS];
 }
 
 function renderDemoTours(lang: Lang): void {
